@@ -36,6 +36,11 @@ export const useAuth = create(
             }
           ]
         });
+        await setDoc(doc(db,"users", auth.currentUser.uid),{
+          uid:auth.currentUser.uid,
+          displayName:username,
+          image:""
+        })
         set({
           user:{
             ...response.user,
@@ -134,6 +139,9 @@ export const useAuth = create(
         await updateProfile(auth.currentUser, {
           photoURL:imageURL,
         });
+        await updateDoc(doc(db,"users",auth.currentUser.uid),{
+          image:imageURL
+        })
         set((state) => ({
           ...state,
           user: {

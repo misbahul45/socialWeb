@@ -24,6 +24,7 @@ function App (){
               <Route path="post" element={<p>Message</p>} />
               <Route path="post/:id" element={<p>Message</p>} />
             </Route>
+            <Route path="/posts" element={<p>Message</p>}/>
             <Route path="/message" element={<p>Message</p>}/>
             <Route path="/friends" element={<p>Message</p>} />
             <Route path="/follower" element={<p>Message</p>} />

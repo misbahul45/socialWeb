@@ -2,6 +2,8 @@ import DisplayAllPost from "../../components/home/DisplayAllPost"
 import FormStoryHome from "../../components/home/FormStoryHome"
 import { useQuery } from "@tanstack/react-query"
 import { getAllPost } from "../../lib/post/getAllPost"
+import ReleatedContents from "../../components/home/ReleatedContents"
+import Users from "../../components/home/Users"
 
 
 const Home = () => {
@@ -21,10 +23,12 @@ const Home = () => {
         <DisplayAllPost posts={posts} isLoading={isLoading} isError={isError} />
       </div>
       <div className="lg:w-1/3 lg:block hidden">
-        <div>
-
+        <div className="px-7">
+          <ReleatedContents  isLoadingPosts={isLoading} />
         </div>
-        <div></div>
+        <div>
+          <Users />
+        </div>
       </div>
     </div>
   )

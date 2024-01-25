@@ -72,7 +72,6 @@ const Message = ({ comment, postId }) => {
 Message.propTypes = {
     comment:PropTypes.object.isRequired,
     postId:PropTypes.string.isRequired,
-    postAuthorId:PropTypes.string.isRequired,
 }
 
 export default Message

@@ -15,7 +15,7 @@ const Navbar = () => {
         navigate(`/user/${user.uid}`)
     }
   return (
-    <header className="hidden w-full bg-slate-900 fixed top-0 sm:flex gap-9 md:gap-0 md:justify-between items-center md:px-24 px-7 h-16 z-30">
+    <header className="hidden w-full bg-slate-900 fixed top-0 sm:flex gap-9 md:gap-0 md:justify-between items-center md:px-24 px-7 h-16 z-20">
         <form className="w-full md:max-w-md flex gap-4">
             <input onChange={(e)=>setSearch(e.target.value)} value={search} type="text" placeholder="Search" className={`${search!==""?"lg:w-64":"w-auto"} pl-4 pb-2 py-1 outline-none bg-slate-700 text-white placeholder:text-white  placeholder:opacity-60 rounded-md shadow-lg focus:placeholder:opacity-80 focus:flex-1 focus:ring-2 focus:ring-slate-50 transition-all duration-500 peer`} />
             <button className={`px-3 bg-slate-900 text-slate-200 font-semibold rounded-md shadow-white/20 ring-2 ring-slate-400 shadow-lg hover:bg-slate-700 hover:shadow-md hover:scale-105 transition-all duration-200 peer-focus:bg-slate-600`}>Search</button>
