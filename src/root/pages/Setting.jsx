@@ -17,10 +17,10 @@ const Setting = () => {
     changeRoute("/home")
   }
   return (
-    <div className="relative w-full pb-5 flex flex-col items-center">
+    <div className="min-h-screen relative w-full md:pb-5 pb-24 flex flex-col items-center">
       <h1 className="text-3xl text-slate-50 font-semibold font-serif mb-8">Edit Profile</h1>
       <CardUser />
-      <ButtonIcon onClick={handleLogout} className={'absolute -bottom-20 md:-bottom-7 right-0 md:right-8 text-4xl text-red-600'} text={'logOut'} textClassName={'text-lg text-white font-semibold'}>
+      <ButtonIcon onClick={handleLogout} className={'mt-5 ml-auto text-4xl text-red-600'} text={'logOut'} textClassName={'text-lg text-white font-semibold'}>
           <CiLogin />
       </ButtonIcon>
     </div>

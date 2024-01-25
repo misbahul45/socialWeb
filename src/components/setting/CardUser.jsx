@@ -69,8 +69,8 @@ const CardUser = () => {
   },[user])
 
   return (
-    <div className="rounded-lg border-2 relative xl:w-full xl:max-w-2xl w-full px-7 pt-5 pb-9 bg-slate-700">
-      <div className="flex flex-col md:flex-row gap-4 md:pb-0 pb-3 md:gap-2 items-center relative">
+    <div className="rounded-lg border-2 relative xl:w-full xl:max-w-2xl w-full px-7 pt-5 pb-16 bg-slate-700">
+      <div className="relative flex flex-col md:flex-row gap-4 md:pb-0 pb-3 md:gap-2 items-center">
         <div className="">
           {image ? (
               <div className="w-auto rounded-full border-2">
@@ -95,7 +95,7 @@ const CardUser = () => {
         {edit && (
         <input
           onChange={handleImageChange}
-          className="absolute top-2 left-0 w-10 cursor-pointer opacity-0 "
+          className="absolute top-2 left-1/2 -translate-x-1/2 md:translate-x-0 md:left-0 w-10 cursor-pointer opacity-0"
           type="file"
        />
             )}
@@ -113,7 +113,7 @@ const CardUser = () => {
               <FaPlus />
             </ButtonIcon>
           </div>
-          <div className="flex gap-2 w-[95%] flex-wrap mb-4 mt-1">
+          <div className="flex gap-2 w-[95%] flex-wrap mb-4 mt-0">
             {
               openReleated&&
                 releatedContentMenu?.map((content,index)=>(
