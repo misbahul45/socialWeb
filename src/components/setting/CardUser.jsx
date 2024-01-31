@@ -55,7 +55,7 @@ const CardUser = () => {
 
   const releatedContentMenu = useMemo(
     () =>
-      ["all", "lifeStyle", "technology", "social", "news", "prodctivity","Daily Habits", "code"].filter(
+      ["all", "life Style", "technology", "social", "news", "productivity","Daily Habits", "code"].filter(
         (item) => !releatedContents?.some((selected) => selected.content === item),
         [user]
       ),

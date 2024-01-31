@@ -13,7 +13,7 @@ const AuthLayout = () => {
     return(
         <>
           {isauthenticated ?
-            <Navigate to={'/'} />
+            <Navigate to={'/home'} />
             :
             <main className="relative w-full h-screen">
               <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-30 w-full h-full">

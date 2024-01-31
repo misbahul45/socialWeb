@@ -25,7 +25,7 @@ const Post = ({ comments, describe, date, likes, postId, createAd ,  postImage, 
        </div>
       }
       <div className="w-full min-h-auto max-h-[70vh] overflow-y-auto mt-2 mb-1.5">
-      {date!==null&&<h1 className="text-3xl text-center font-semibold text-slate-100 font-serif my-2">{date}</h1>}
+      {date!==null&&<h1 className="lg:text-3xl sm:text-xl text-lg text-center font-semibold text-slate-100 font-serif my-2">{date}</h1>}
         {
           textContent?.map((content,index)=>(
             content.includes('https')?

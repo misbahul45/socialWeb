@@ -25,7 +25,7 @@ const Message = ({ comment, postId }) => {
 
 
   return (
-    <div>
+    <>
         <div className="w-full">
             <div className="flex justify-between items-center">
                 <div onClick={()=>changeRoute(`/user/${comment.uid}`)} className="flex gap-2 items-center hover:cursor-pointer">
@@ -65,7 +65,7 @@ const Message = ({ comment, postId }) => {
                </div>
            </div>
         </div>
-    </div>
+    </>
   )
 }
 

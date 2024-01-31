@@ -39,7 +39,7 @@ const BooksMark = () => {
       <div className="w-full flex items-center gap-4 md:justify-around mb-7">
         <h1 className="lg:text-5xl sm:text-3xl text-xl text-slate-100 font-semibold">Bookmark Posts</h1>
         <div className="relative">
-          <button onClick={handleFilter} className="flex justify-center items-center gap-3 lg:w-64 md:w-48 w-32 bg-slate-600 py-1.5 rounded-md text-slate-200 font-serif text-lg capitalize font-semibold ring-[1px] shadow-lg shadow-white/20 ring-slate-100 hover:scale-105 hover:bg-slate-900 transition-all duration-200">
+          <button onClick={handleFilter} className="flex justify-center items-center gap-3 lg:w-56 md:w-48 w-32 bg-slate-600 py-1.5 rounded-md text-slate-200 font-serif text-lg capitalize font-semibold ring-[1px] shadow-lg shadow-white/20 ring-slate-100 hover:scale-105 hover:bg-slate-900 transition-all duration-200">
             {
             showFilter?".......":filter?
             <>
