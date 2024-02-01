@@ -1,14 +1,13 @@
 import { useQuery } from "@tanstack/react-query"
-import getAllUsers from "../../lib/users/users"
-import { useAuth } from "../../store/user"
-import ButtonIcon from "../ButtonIcon"
+import getAllUsers from "../lib/users/users"
+import PropTypes from "prop-types" 
+import ButtonIcon from "./ButtonIcon"
 import { FaUserCircle } from "react-icons/fa"
-import useRoute from "../../store/route"
+import useRoute from "../store/route"
 import { useMemo } from "react"
-import ButtonFollow from "./buttonFollow"
-const Users = () => {
+import ButtonFollow from "./home/buttonFollow"
+const Users = ( {uid, action} ) => {
   const changeRoute=useRoute(state=>state.changeRoute)
-  const uid=useAuth((state)=>state.user.uid)
 
   const { data, isLoading }=useQuery({
     queryKey:["users"],
@@ -22,22 +21,32 @@ const Users = () => {
 
   const users=useMemo(()=>{
     if(data){
-      const randomIndex=Math.random()*data.length
-      return data.length>5?data.filter((data)=>data.uid!==uid).slice(randomIndex,(randomIndex+5)):data.filter((data)=>data.uid!==uid)
+        let dataUsers;
+        if(action==="random"){
+          const randomIndex=Math.random()*data.length
+           dataUsers=data.length>5?data.filter((data)=>data.uid!==uid).slice(randomIndex,(randomIndex+5)):data.filter((data)=>data.uid!==uid)
+        }else if(action==="followed"){
+          dataUsers=data.filter((data)=>data.uid!==uid).filter((data)=>data.friends?.find((data)=>data.friendId===uid && data.isFriend===true))
+        }else{
+          dataUsers=data.filter((data)=>data.uid!==uid).sort((a,b)=>{
+            return new Date(b.createdAt)-new Date(a.createdAt)
+          })
+        }
+
+        return dataUsers||[]
     }
-  },[data,uid])
+  },[data,uid,action])
 
 
   return (
-    <div className="px-7 mt-4">
-      <h1 className="text-center text-2xl italic font-semibold uppercase text-slate-100 mb-3">users</h1>
+    <div className="w-full px-7 mt-4">
       <div className="w-full bg-gradient-to-br from-slate-800 to-slate-700 border border-slate-400 rounded-lg ml-6 flex flex-col gap-2 items-start drop-shadow-xl">
         {
           isLoading?
-          <h1 className="text-3xl text-slate-600 animate-pulse">Loading.....</h1>
+          <h1 className="ml-4 py-4 text-3xl text-slate-600 animate-pulse">Loading.....</h1>
           :
           users.map((user,index)=>(
-            <div key={user.uid} className={`${index===0?"rounded-t-lg":index===users.length-1?"rounded-b-lg":""} px-5 py-1.5 flex items-center justify-between w-full hover:bg-slate-900 hover:drop-shadow-lg transition-all duration-200`}>
+            <div key={user.uid} className={`${index===0?"rounded-t-lg":index===users.length-1?"rounded-b-lg":users.length===1?"rounded-lg":""} px-5 py-3 flex items-center justify-between w-full hover:bg-slate-900 hover:drop-shadow-lg transition-all duration-200`}>
               <div onClick={()=>handleToUser(`/user/${user.uid}`)} className="flex cursor-pointer">
                 <div>
                   {
@@ -60,6 +69,11 @@ const Users = () => {
       </div>
     </div>
   )
+}
+
+Users.propTypes = {
+  uid:PropTypes.string,
+  action:PropTypes.string
 }
 
 export default Users

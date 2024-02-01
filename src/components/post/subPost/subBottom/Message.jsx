@@ -13,7 +13,7 @@ const Message = ({ comment, postId }) => {
     const author=useAuth((state)=>state.user)
     const changeRoute=useRoute((state)=>state.changeRoute)
 
-    const  handleDeleteComments=async()=>{
+    const handleDeleteComments=async()=>{
         try{
             await deleteComments(comment, postId)
         }catch(e){

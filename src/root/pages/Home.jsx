@@ -3,10 +3,12 @@ import FormStoryHome from "../../components/home/FormStoryHome"
 import { useQuery } from "@tanstack/react-query"
 import { getAllPost } from "../../lib/post/getAllPost"
 import ReleatedContents from "../../components/home/ReleatedContents"
-import Users from "../../components/home/Users"
+import Users from "../../components/Users"
+import { useAuth } from "../../store/user"
 
 
 const Home = () => {
+  const uid=useAuth((state)=>state.user.uid)
   const { data:posts, isError, isLoading } = useQuery({
     queryKey:["all posts"],
     queryFn:()=>{
@@ -27,7 +29,7 @@ const Home = () => {
           <ReleatedContents  isLoadingPosts={isLoading} />
         </div>
         <div>
-          <Users />
+          <Users action="random" uid={uid} />
         </div>
       </div>
     </div>
