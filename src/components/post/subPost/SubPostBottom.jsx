@@ -10,20 +10,13 @@ import Messages from "./subBottom/Messages"
 import { useQuery } from "@tanstack/react-query"
 import getAllBookMarksPosts from "../../../lib/post/bookmarks/getAllbooksMark";
 import addBookMark from "../../../lib/post/bookmarks/AddBooksMark"
-import useNotification from "../../../store/notification";
-import addNotification from "../../../lib/notification/addNotification";
-import removeNotification from "../../../lib/notification/removeNotification";
 
-
-const SubPostBottom = ({likes, comments,numComment, numLikes, postId }) => {
-    const addNotificationUser=useNotification(state=>state.addNotification)
-    const removeNotificationUser=useNotification(state=>state.removeNotification)
+const SubPostBottom = ({likes, comments,numComment, numLikes, postId,  }) => {
     const user=useAuth((state)=>state.user)
     const [showComments, setShowComents]=useState(false)
-    const { data:bookmark, isLoading }=useQuery({
+    const { data:bookmark, isLoading, refetch }=useQuery({
         queryKey:["userBookmark"],
         queryFn:()=>getAllBookMarksPosts(user.uid),
-        refetchInterval:1000,
     })
     const isComment = useMemo(
         () => comments.map((u) => u.uid).indexOf(user.uid) !== -1,
@@ -50,6 +43,7 @@ const SubPostBottom = ({likes, comments,numComment, numLikes, postId }) => {
                 uid:user.uid,
             }
             await addLikes(likes, userLike, postId)
+            refetch()
         }catch(e){
             toast.error("Something is wrong !")
         }
@@ -65,18 +59,8 @@ const SubPostBottom = ({likes, comments,numComment, numLikes, postId }) => {
     }
 
     const handleBookmark=async()=>{
-        const notification={
-            id:postId,
-            notif:"bookmark"
-        }
-        if(isUserBookmark){
-            removeNotificationUser(postId)
-            await removeNotification(notification)
-        }else{
-            addNotificationUser(notification)
-            await addNotification(user.uid,notification)
-        }
         await addBookMark(user.uid, postId)
+        refetch()
     }
 
   return (

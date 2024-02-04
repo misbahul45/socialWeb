@@ -24,6 +24,18 @@ export const removeFriends=async(uid, friendId)=>{
                 isFriend:true,
             })
         })
+        await updateDoc(doc(db,"users",friendId),{
+            friends:arrayRemove({
+                friendId:uid,
+                isFriend:true,
+            })
+        })
+        await updateDoc(doc(db,"users",friendId),{
+            friends:arrayUnion({
+                friendId:uid,
+                isFriend:false,
+            })
+        })
         return true
     }catch(e){
         console.log(e)
@@ -49,6 +61,21 @@ export const follbackFriends=async(uid, friendId)=>{
             friends:arrayUnion({
                 friendId,
                 isFriend:true,
+            })
+        })
+        return true
+    }catch(e){
+        console.log(e)
+      return false
+    }
+}
+
+export const removeFollowing=async(uid,friendId)=>{
+    try{
+        await updateDoc(doc(db,"users",uid),{
+            friends:arrayRemove({
+                friendId,
+                isFriend:false
             })
         })
         return true

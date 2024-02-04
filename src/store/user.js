@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { auth, db, storage } from "../config/firebase";
-import { arrayRemove, arrayUnion, doc, getDoc, setDoc, updateDoc } from "firebase/firestore"; 
+import { arrayRemove, arrayUnion, collection, doc, getDoc, getDocs, setDoc, updateDoc } from "firebase/firestore"; 
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import {  getDownloadURL, listAll, ref } from "firebase/storage";
 import { nanoid } from "nanoid";
@@ -95,10 +95,29 @@ export const useAuth = create(
         }  
     },
     changeUserName:async(name)=>{
+      const collecttionPosts=collection(db,"posts")
       try{
+        const queryPosts=await getDocs(collecttionPosts)
+        queryPosts.docs.forEach(async (postData) => {
+          const post = postData.data();
+          if (post.uid === auth.currentUser.uid) {
+            post.uUserName = name;
+            post.comments = post.comments.map((comment) => ({
+              ...comment,
+              uName: name,
+            }));
+            await updateDoc(doc(db,"posts",post.postId),{
+              ...post
+            })
+          }
+        });
+
         await updateProfile(auth.currentUser, {
           displayName:name,
         });
+        await updateDoc(doc(db,"users",auth.currentUser.uid),{
+          displayName:name
+        })
         set((state)=>{
           return{
             ...state,
@@ -142,6 +161,7 @@ export const useAuth = create(
         await updateDoc(doc(db,"users",auth.currentUser.uid),{
           image:imageURL
         })
+
         set((state) => ({
           ...state,
           user: {

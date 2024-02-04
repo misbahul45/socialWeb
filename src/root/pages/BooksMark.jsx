@@ -13,7 +13,7 @@ const BooksMark = () => {
   const { data:posts, isLoading, isError }=useQuery({
     queryKey:["bookmark posts"],
     queryFn:()=>getAllBookMarksPosts(user.uid),
-    refetchInterval:1000,
+    refetchInterval:2000
   })
   const bookmarkPosts=useMemo(()=>{
     if(posts){

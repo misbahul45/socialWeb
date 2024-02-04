@@ -4,16 +4,16 @@ import useRoute from '../../../../store/route'
 import { deletePost } from '../../../../lib/post/deletePost'
 import { toast } from "react-toastify"
 
-const Menu = ({postId,uid}) => {
+
+const Menu = ({ postId , uid, isImage }) => {
     const authorId=useAuth((state)=>state.user.uid)
     const changeRoute=useRoute((state)=>state.changeRoute)
 
     const handleDeletePost=async()=>{
        try{
-        await deletePost(postId)
-        toast.success("succes deleted")
+        await deletePost(postId, isImage)
        }catch(e){
-        toast.error("cannot delete post")
+        toast.error("Something Wrong")
        }
     }
 
@@ -31,6 +31,7 @@ const Menu = ({postId,uid}) => {
 Menu.propTypes = {
     postId:PropTypes.string.isRequired,
     uid:PropTypes.string.isRequired,
+    isImage:PropTypes.bool
 }
 
 export default Menu

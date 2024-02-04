@@ -8,6 +8,8 @@ import Setting from "./root/pages/Setting"
 import Start from "./Index"
 import BooksMark from "./root/pages/BooksMark"
 import Friends from "./root/pages/Friends"
+import Messages from "./root/pages/Messages"
+import MainMessages from "./components/messages/main/MainMessages"
 function App (){
   return (
     <main className="flex h-screen">
@@ -26,7 +28,9 @@ function App (){
               <Route path="post/:id" element={<p>Message</p>} />
             </Route>
             <Route path="/posts" element={<p>Message</p>}/>
-            <Route path="/message" element={<p>Message</p>}/>
+            <Route path="/messages" element={<Messages />}>
+              <Route path="message/:id" element={<MainMessages />} />
+            </Route>
             <Route path="/friends" element={<Friends />} />
             <Route path="/bookmarks" element={<BooksMark />} />
             <Route path="/setting" element={<Setting />} />

@@ -1,5 +1,4 @@
 import { Outlet } from "react-router-dom"
-
 import Navbar from "../components/Navbar"
 import Menubar from "../components/Menubar"
 import ButtonIcon from "../components/ButtonIcon"
@@ -20,7 +19,7 @@ const RootLayout = () => {
       </ButtonIcon>
       <Menubar />
       <Navbar />
-      <div className="w-full min-h-screen md:pl-20 md:pr-7 px-6 sm:pt-20 pt-7 bg-gradient-to-b from-slate-800 to-slate-950 overflow-y-scroll no-scrollbar">
+      <div className={`w-full min-h-screen md:pl-20 md:pr-7 px-6 ${!route.includes("messages")?" sm:pt-20 pt-7":""} bg-gradient-to-b from-slate-800 to-slate-950 overflow-y-scroll no-scrollbar`}>
         <Outlet />
       </div>
     </main>

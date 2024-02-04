@@ -35,7 +35,7 @@ const SubPostTop = ({ postId, uid, userImage, userName, createAd }) => {
         </ButtonIcon>
         {
             showMenu===postId&&
-            <Menu postId={postId} uid={uid} />
+            <Menu isImage={userImage?true:false} postId={postId} uid={uid} />
         }
     </div>
   )

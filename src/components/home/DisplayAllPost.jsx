@@ -28,7 +28,7 @@ const DisplayAllPost = ({posts, isLoading, isError}) => {
 DisplayAllPost.propTypes = {
   posts:PropTypes.array,
   isLoading:PropTypes.bool,
-  isError:PropTypes.bool
+  isError:PropTypes.bool,
 }
 
 

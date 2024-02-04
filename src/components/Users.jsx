@@ -5,14 +5,14 @@ import ButtonIcon from "./ButtonIcon"
 import { FaUserCircle } from "react-icons/fa"
 import useRoute from "../store/route"
 import { useMemo } from "react"
-import ButtonFollow from "./home/buttonFollow"
+import ButtonFollow from "./home/ButtonFollow"
 const Users = ( {uid, action} ) => {
   const changeRoute=useRoute(state=>state.changeRoute)
 
   const { data, isLoading }=useQuery({
     queryKey:["users"],
     queryFn:getAllUsers,
-    refetchInterval:1000
+    refetchInterval:2000
   })
 
   const handleToUser=(id)=>{
@@ -26,7 +26,7 @@ const Users = ( {uid, action} ) => {
           const randomIndex=Math.random()*data.length
            dataUsers=data.length>5?data.filter((data)=>data.uid!==uid).slice(randomIndex,(randomIndex+5)):data.filter((data)=>data.uid!==uid)
         }else if(action==="followed"){
-          dataUsers=data.filter((data)=>data.uid!==uid).filter((data)=>data.friends?.find((data)=>data.friendId===uid && data.isFriend===true))
+          dataUsers=data.filter((data)=>data.uid!==uid).filter((data)=>data.friends?.find((data)=>data.friendId===uid && data.isFriend===true || data.isFriend===false ))
         }else{
           dataUsers=data.filter((data)=>data.uid!==uid).sort((a,b)=>{
             return new Date(b.createdAt)-new Date(a.createdAt)
@@ -53,7 +53,7 @@ const Users = ( {uid, action} ) => {
                     user.image?
                     <img src={user.image} alt='userImage' className="sm:mr-4 mr-2 md:w-9 md:h-9 sm:w-8 sm:h-8 w-7 h-7 rounded-full object-cover" />
                     :
-                    <ButtonIcon  className={'mr-0 md::mr-2 flex items-center gap-3 md:text-4xl text-3xl text-slate-100'}>
+                    <ButtonIcon className={'mr-0 md::mr-2 flex items-center gap-3 md:text-4xl text-3xl text-slate-100'}>
                             <FaUserCircle/>
                     </ButtonIcon>
                   }

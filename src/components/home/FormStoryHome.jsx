@@ -9,9 +9,9 @@ import { useAuth } from '../../store/user';
 import ButtonIcon from '../ButtonIcon';
 import { upLoadPost } from '../../lib/post/uploadPost';
 import ListAllEmoji from '../post/ListAllEmoji';
+import PropTypes from 'prop-types'
 
-
-const FormStoryHome = () => {
+const FormStoryHome = ({ refetchPost }) => {
     const user=useAuth((state)=>state.user)
     const userImage = user.photoURL
     const uid=user.uid;
@@ -71,6 +71,7 @@ const FormStoryHome = () => {
         e.preventDefault()
         if(text!==""){
             await upLoadPost(user.displayName, datePost, textPost, userImage, uid, selectedImage )
+            refetchPost()
             setText('')
             setTextPost([''])
             setImgPost(null)
@@ -141,5 +142,9 @@ const FormStoryHome = () => {
         </>
     );
 }
+
+FormStoryHome.propTypes = {
+    refetchPost:PropTypes.func
+  }
 
 export default FormStoryHome;
