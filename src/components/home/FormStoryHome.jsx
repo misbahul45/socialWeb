@@ -82,7 +82,6 @@ const FormStoryHome = ({ refetchPost }) => {
             setTextRow(2)
         }
     }
-
     return (
         <>
             <form onSubmit={handleAddPost} className="relative w-full md:pt-5 pt-3 pb-3 md:px-8 px-5 flex gap-1 md:gap-3 bg-slate-700 rounded-lg border-2 border-slate-500 shadow-white/10 shadow-xl">
@@ -114,7 +113,7 @@ const FormStoryHome = ({ refetchPost }) => {
                         <div className="w-1/2 relative flex items-center gap-2 md:gap-4">
                             <ButtonIcon type={'button'} className={'relative text-lg md:text-2xl text-slate-100 hover:scale-110 hover:text-orange-500'}>
                                 <FaImages />
-                                <input onChange={onChangeAddImage} type="file" className="absolute top-0 left-0 w-7 h-5 opacity-0" />
+                                <input onChange={onChangeAddImage} type="file"  accept="image/png, image/gif, image/jpeg" className="absolute top-0 left-0 w-7 h-5 opacity-0" />
                             </ButtonIcon>
                             <ButtonIcon onClick={handleOpenEmoji} type={'button'} className={'relative text-lg md:text-2xl text-slate-100 hover:scale-110 hover:text-orange-500'}>
                                 <MdEmojiEmotions />

@@ -6,7 +6,7 @@ import { FaUserCircle } from "react-icons/fa"
 import useRoute from "../store/route"
 import { useMemo } from "react"
 import ButtonFollow from "./home/ButtonFollow"
-const Users = ( {uid, action} ) => {
+const Users = ( {uid, action, search} ) => {
   const changeRoute=useRoute(state=>state.changeRoute)
 
   const { data, isLoading }=useQuery({
@@ -27,6 +27,8 @@ const Users = ( {uid, action} ) => {
            dataUsers=data.length>5?data.filter((data)=>data.uid!==uid).slice(randomIndex,(randomIndex+5)):data.filter((data)=>data.uid!==uid)
         }else if(action==="followed"){
           dataUsers=data.filter((data)=>data.uid!==uid).filter((data)=>data.friends?.find((data)=>data.friendId===uid && data.isFriend===true || data.isFriend===false ))
+        }else if(action==="search"){
+          dataUsers=data.filter((user)=>user.displayName.toLowerCase().includes(search.toLowerCase()) && user.uid!==uid)
         }else{
           dataUsers=data.filter((data)=>data.uid!==uid).sort((a,b)=>{
             return new Date(b.createdAt)-new Date(a.createdAt)
@@ -35,8 +37,9 @@ const Users = ( {uid, action} ) => {
 
         return dataUsers||[]
     }
-  },[data,uid,action])
+  },[data,uid,action, search])
 
+  console.log(users)
 
   return (
     <div className="w-full px-7 mt-4">
@@ -59,7 +62,7 @@ const Users = ( {uid, action} ) => {
                   }
                 </div>
                 <div className="flex-1">
-                    <h1 className="text-lg text-slate-400 font-semibold">{user.displayName}</h1>
+                    <h1 className="text-md text-slate-400 font-semibold">{user.displayName}</h1>
                 </div>
               </div>
               <ButtonFollow uid={uid} data={data} idFriend={user.uid} />
@@ -73,7 +76,8 @@ const Users = ( {uid, action} ) => {
 
 Users.propTypes = {
   uid:PropTypes.string,
-  action:PropTypes.string
+  action:PropTypes.string,
+  search:PropTypes.string
 }
 
 export default Users

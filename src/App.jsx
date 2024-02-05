@@ -10,6 +10,8 @@ import BooksMark from "./root/pages/BooksMark"
 import Friends from "./root/pages/Friends"
 import Messages from "./root/pages/Messages"
 import MainMessages from "./components/messages/main/MainMessages"
+import Posts from "./root/pages/posts"
+import PostHome from "./components/home/PostHome"
 function App (){
   return (
     <main className="flex h-screen">
@@ -24,10 +26,9 @@ function App (){
             <Route index element={<Start />} />
             <Route path="/home" element={<Home />}>
               <Route path="upload" element={<p>Message</p>} />
-              <Route path="post" element={<p>Message</p>} />
-              <Route path="post/:id" element={<p>Message</p>} />
+              <Route path="post/:id" element={<PostHome />} />
             </Route>
-            <Route path="/posts" element={<p>Message</p>}/>
+            <Route path="/posts" element={<Posts />}/>
             <Route path="/messages" element={<Messages />}>
               <Route path="message/:id" element={<MainMessages />} />
             </Route>

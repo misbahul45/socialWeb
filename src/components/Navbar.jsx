@@ -3,7 +3,7 @@ import { useAuth } from "../store/user";
 import { useNavigate } from "react-router-dom"
 import ButtonIcon from "./ButtonIcon";
 import useRoute from "../store/route";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 const Navbar = () => {
     const [search, setSearch]=useState("")
     const user=useAuth((state)=>state.user)
@@ -14,6 +14,17 @@ const Navbar = () => {
         changeRoute(`/user/${user.uid}`)
         navigate(`/user/${user.uid}`)
     }
+    useEffect(()=>{
+        if(search===""){
+            changeRoute(`/home`)
+        }else{
+            if(search.length>=3){
+                changeRoute(`/posts?content=${search}`)
+            }
+        }
+    },[search, changeRoute])
+
+
   return (
     <header className="hidden w-full bg-slate-900 fixed top-0 sm:flex gap-9 md:gap-0 md:justify-between items-center md:px-24 px-7 h-16 z-20">
         <form className="w-full md:max-w-md flex gap-4">
