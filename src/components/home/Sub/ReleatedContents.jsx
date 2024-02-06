@@ -1,5 +1,5 @@
-import useRoute from "../../store/route";
-import { useAuth } from "../../store/user";
+import useRoute from "../../../store/route";
+import { useAuth } from "../../../store/user";
 import PropTypes from 'prop-types';
 
 const ReleatedContents = ({ isLoadingPosts }) => {

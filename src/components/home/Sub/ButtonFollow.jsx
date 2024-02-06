@@ -1,10 +1,10 @@
 import { useMutation } from '@tanstack/react-query'
 import PropTypes from 'prop-types'
-import { addFriends, follbackFriends, removeFollowing, removeFriends } from '../../lib/users/friends'
+import { addFriends, follbackFriends, removeFollowing, removeFriends } from '../../../lib/users/friends'
 import { useMemo } from 'react'
-import ButtonIcon from '../ButtonIcon'
+import ButtonIcon from '../../ButtonIcon'
 import { FaFacebookMessenger } from 'react-icons/fa'
-import useRoute from '../../store/route'
+import useRoute from '../../../store/route'
 
 const ButtonFollow = ({ idFriend, uid, data }) => {
   const changeRoute=useRoute(state=>state.changeRoute)

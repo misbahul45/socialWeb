@@ -1,5 +1,5 @@
-import Post from "../post/Post"
-import PostLoading from "../post/PostLoading"
+import Post from "../../post/Post"
+import PostLoading from "../../post/PostLoading"
 import PropTypes from 'prop-types'
 
 const DisplayAllPost = ({posts, isLoading, isError}) => {
@@ -13,7 +13,7 @@ const DisplayAllPost = ({posts, isLoading, isError}) => {
       :
       posts.map((post,i)=>{
         return(
-          <Post key={i} uid={post.uid} userName={post.uUserName} userImage={post.uImg} createAd={post.createAd} comments={post.comments} likes={post.likes} postImage={post.postImage} describe={post.content} postId={post.postId} date={post?.date} />
+          <Post key={i} uid={post.uid} userName={post.uUserName} userImage={post.uImg} createAd={post.createAd} comments={post.comments} likes={post.likes} postImage={post.postImage} describe={post.content} postId={post.postId} date={post.date} />
         )
       })
       }

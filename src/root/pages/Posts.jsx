@@ -1,6 +1,6 @@
 import { useSearchParams } from 'react-router-dom';
 import { useQuery } from "@tanstack/react-query"
-import DisplayAllPost from '../../components/home/DisplayAllPost';
+import DisplayAllPost from '../../components/home/Main/DisplayAllPost';
 import Users from '../../components/Users';
 import { getAllPost } from '../../lib/post/getAllPost';
 import { useAuth } from '../../store/user';

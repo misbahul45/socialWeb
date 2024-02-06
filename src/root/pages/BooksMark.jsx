@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query"
 import getAllBookMarksPosts from "../../lib/post/bookmarks/getAllbooksMark"
 import { useAuth } from "../../store/user"
-import DisplayAllPost from "../../components/home/DisplayAllPost"
+import DisplayAllPost from "../../components/home/Main/DisplayAllPost"
 import  { useMemo, useState } from "react"
 import Menu from "../../components/bookmark/Menu"
 import { FaArrowCircleDown } from "react-icons/fa"

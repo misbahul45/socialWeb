@@ -5,10 +5,10 @@ import { MdEmojiEmotions, MdDateRange } from "react-icons/md";
 import { IoCloseCircleSharp } from "react-icons/io5";
 import Calendar from 'react-calendar';
 
-import { useAuth } from '../../store/user';
-import ButtonIcon from '../ButtonIcon';
-import { upLoadPost } from '../../lib/post/uploadPost';
-import ListAllEmoji from '../post/ListAllEmoji';
+import { useAuth } from '../../../store/user';
+import ButtonIcon from '../../ButtonIcon';
+import { upLoadPost } from '../../../lib/post/uploadPost';
+import ListAllEmoji from '../../post/ListAllEmoji';
 import PropTypes from 'prop-types'
 
 const FormStoryHome = ({ refetchPost }) => {

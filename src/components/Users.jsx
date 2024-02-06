@@ -5,7 +5,7 @@ import ButtonIcon from "./ButtonIcon"
 import { FaUserCircle } from "react-icons/fa"
 import useRoute from "../store/route"
 import { useMemo } from "react"
-import ButtonFollow from "./home/ButtonFollow"
+import ButtonFollow from "./home/Sub/ButtonFollow"
 const Users = ( {uid, action, search} ) => {
   const changeRoute=useRoute(state=>state.changeRoute)
 
@@ -38,8 +38,6 @@ const Users = ( {uid, action, search} ) => {
         return dataUsers||[]
     }
   },[data,uid,action, search])
-
-  console.log(users)
 
   return (
     <div className="w-full px-7 mt-4">
