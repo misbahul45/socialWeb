@@ -41,7 +41,7 @@ const Users = ( {uid, action, search} ) => {
 
   return (
     <div className="w-full px-7 mt-4">
-      <div className="w-full bg-gradient-to-br from-slate-800 to-slate-700 border border-slate-400 rounded-lg ml-6 flex flex-col gap-2 items-start drop-shadow-xl">
+      <div className="w-full bg-gradient-to-br from-slate-800 to-slate-700 border border-slate-400 rounded-lg lg:ml-6 flex flex-col gap-2 items-start drop-shadow-xl">
         {
           isLoading?
           <h1 className="ml-4 py-4 text-3xl text-slate-600 animate-pulse">Loading.....</h1>

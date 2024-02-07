@@ -116,7 +116,7 @@ const FormStoryHome = ({ refetchPost }) => {
                     </div>
                     <div className="flex justify-between items-center md:mt-2 pr-2  md:pr-4">
                         <div className="w-1/2 relative flex items-center gap-2 md:gap-4">
-                            <button onClick={()=>setOpenContents(prev=>!prev)} className={`capitalize font-semibold w-40 py-1.5 text-slate-200 rounded-md hover:scale-105 ${releatedContent?"bg-red-800 hover:bg-red-700":"bg-slate-800 hover:bg-slate-500"} transition-all duration-150`}>
+                            <button type="button" onClick={()=>setOpenContents(prev=>!prev)} className={`capitalize font-semibold w-48 lg:w-40 lg:text-md md:text-sm text-xs py-1.5 text-slate-200 rounded-md hover:scale-105 ${releatedContent?"bg-red-800 hover:bg-red-700":"bg-slate-800 hover:bg-slate-500"} transition-all duration-150`}>
                                 {releatedContent || "Contents"}
                             </button>
                             <ButtonIcon type={'button'} className={'relative text-lg md:text-2xl text-slate-100 hover:scale-110 hover:text-orange-500'}>
