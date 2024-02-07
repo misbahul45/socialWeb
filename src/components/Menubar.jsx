@@ -2,7 +2,6 @@ import { MdHomeWork } from "react-icons/md";
 import { FaUserFriends } from "react-icons/fa";
 import { AiFillMessage } from "react-icons/ai";
 import { IoBookmarks,IoSettings } from "react-icons/io5";
-import { BsPlusSquareFill } from "react-icons/bs";
 import ButtonIcon from "./ButtonIcon";
 import { useNavigate } from 'react-router-dom'
 import useRoute from "../store/route";
@@ -42,11 +41,6 @@ const Menubar = () => {
         </ButtonIcon>
         <ButtonIcon onClick={()=>handleToRoute('/setting')}  className={`w-full flex items-center justify-center py-2 md:px-2 text-2xl text-slate-100 rounded-md  ${route==="/setting"?"shadow-lg bg-slate-100 text-slate-900":"hover:shadow-lg hover:bg-slate-100 hover:text-red-600"} transition-all duration-500`}>
           <IoSettings className={`${route==="/setting"?"animate-spin":""}`} />
-        </ButtonIcon>
-      </div>
-      <div className="hidden md:pb-7 h-1/4 md:flex md:flex-col gap-5 items-center md:justify-end">
-        <ButtonIcon onClick={()=>handleToRoute('/home/post')} className={`w-full flex items-center justify-center py-2 md:px-2 text-2xl text-slate-100 rounded-md  ${route==="/home/post"?"shadow-lg bg-slate-100 text-slate-900":"hover:shadow-lg hover:bg-slate-100 hover:text-red-600"} transition-all duration-500`}>
-          <BsPlusSquareFill />
         </ButtonIcon>
       </div>
     </div>

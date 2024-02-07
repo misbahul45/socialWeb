@@ -6,9 +6,9 @@ import { FaUserCircle } from "react-icons/fa"
 import useRoute from "../store/route"
 import { useMemo } from "react"
 import ButtonFollow from "./home/Sub/ButtonFollow"
+import { motion } from "framer-motion"
 const Users = ( {uid, action, search} ) => {
   const changeRoute=useRoute(state=>state.changeRoute)
-
   const { data, isLoading }=useQuery({
     queryKey:["users"],
     queryFn:getAllUsers,
@@ -47,7 +47,13 @@ const Users = ( {uid, action, search} ) => {
           <h1 className="ml-4 py-4 text-3xl text-slate-600 animate-pulse">Loading.....</h1>
           :
           users.map((user,index)=>(
-            <div key={user.uid} className={`${index===0?"rounded-t-lg":index===users.length-1?"rounded-b-lg":users.length===1?"rounded-lg":""} px-5 py-3 flex items-center justify-between w-full hover:bg-slate-900 hover:drop-shadow-lg transition-all duration-200`}>
+            <motion.div
+            initial={{ opacity:0 }}
+            animate={{ opacity: 1 }}
+            transition={{
+              duration: 1,
+            }}
+             key={user.uid} className={`${index===0?"rounded-t-lg":index===users.length-1?"rounded-b-lg":users.length===1?"rounded-lg":""} px-5 py-3 flex items-center justify-between w-full hover:bg-slate-900 hover:drop-shadow-lg transition-all duration-200`}>
               <div onClick={()=>handleToUser(`/user/${user.uid}`)} className="flex cursor-pointer">
                 <div>
                   {
@@ -64,7 +70,7 @@ const Users = ( {uid, action, search} ) => {
                 </div>
               </div>
               <ButtonFollow uid={uid} data={data} idFriend={user.uid} />
-          </div>
+          </motion.div>
           ))
         }
       </div>

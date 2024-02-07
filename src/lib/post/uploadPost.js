@@ -4,7 +4,7 @@ import { nanoid } from "nanoid"
 import { doc, setDoc } from "firebase/firestore";
 import { format } from "date-fns"
 
-export const upLoadPost = async (uUserName, date, content, uImg, uid, image) => {
+export const upLoadPost = async (uUserName, date, content, uImg, uid, image, releatedContent) => {
     const postId = nanoid();
     let postImage = "";
     const upload=image?await uploadBytes(ref(storage, `posts/${postId}`), image):false
@@ -27,7 +27,7 @@ export const upLoadPost = async (uUserName, date, content, uImg, uid, image) => 
             date:format(new Date(),'yyyy-MM-dd'),
             clock:format(new Date(),'HH:mm:ss')
         },
-        releatedContent:"",
+        releatedContent:releatedContent || "",
         bookmarkUser:[]
     })
 }

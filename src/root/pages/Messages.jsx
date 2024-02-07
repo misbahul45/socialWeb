@@ -10,10 +10,10 @@ import { useAuth } from "../../store/user";
 const Messages = () => {
   const uid=useAuth((state)=>state.user.uid)
   const route=useRoute(state=>state.route)
-    const { data, isLoading }=useQuery({
-        queryKey:["messages friends"],
-        queryFn:getAllUsers
-    })
+  const { data, isLoading }=useQuery({
+       queryKey:["messages friends"],
+      queryFn:getAllUsers
+  })
     const usersFriends=useMemo(()=>{
       if(data){
         return data.filter((user)=>user.friends.some((friend)=>{

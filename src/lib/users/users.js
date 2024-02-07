@@ -1,4 +1,4 @@
-import { collection, getDocs } from "firebase/firestore"
+import { collection, doc, getDoc, getDocs } from "firebase/firestore"
 import { db } from "../../config/firebase"
 
 const getAllUsers=async()=>{
@@ -13,3 +13,14 @@ const getAllUsers=async()=>{
     }
 }
 export default getAllUsers
+
+export const getSingleUser=async(id)=>{
+    const queryDataUser=await getDoc(doc(db,"users",id))
+    const dataUser=queryDataUser.data()
+    const queryDataBio=await getDoc(doc(db,"info_user",id))
+    const dataBio=queryDataBio.data()
+    return {
+        ...dataUser,
+        ...dataBio
+    }
+}

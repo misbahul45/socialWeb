@@ -11,7 +11,7 @@ import Friends from "./root/pages/Friends"
 import Messages from "./root/pages/Messages"
 import MainMessages from "./components/messages/main/MainMessages"
 import Posts from "./root/pages/posts"
-import CreatePost from "./components/home/Main/CreatePost"
+import UserAccount from "./root/pages/UserAccount"
 function App (){
   return (
     <main className="flex h-screen">
@@ -24,9 +24,7 @@ function App (){
           {/*Private*/}
           <Route element={<RootLayout />}>
             <Route index element={<Start />} />
-            <Route path="/home" element={<Home />}>
-              <Route path="post" element={<CreatePost />} />
-            </Route>
+            <Route path="/home" element={<Home />} />
             <Route path="/posts" element={<Posts />}/>
             <Route path="/messages" element={<Messages />}>
               <Route path="message/:id" element={<MainMessages />} />
@@ -34,7 +32,7 @@ function App (){
             <Route path="/friends" element={<Friends />} />
             <Route path="/bookmarks" element={<BooksMark />} />
             <Route path="/setting" element={<Setting />} />
-            <Route path="/user/:id" element={<p>Hallo</p>} />
+            <Route path="/user/:id" element={<UserAccount />} />
           </Route>
         </Routes>
     </main>

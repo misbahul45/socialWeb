@@ -19,15 +19,20 @@ const Posts = () => {
         },
       })
 
+
     const posts=useMemo(()=>{
         if(data){
             if(!releatedContents.includes(searching)){
-                return data.filter((post)=>post.content.some((content)=>content.toLowerCase().includes(searching.toLowerCase())))
+              return data.filter((post)=>post.content.some((content)=>content.toLowerCase().includes(searching.toLowerCase())))
             }else{
+                if(searching==="all"){
+                  return data
+                }
                 return data.filter((post)=>post.releatedContent===searching)
             }
         }
     }, [searching, data, releatedContents])
+
 
   return (
     <div className="flex gap-4">

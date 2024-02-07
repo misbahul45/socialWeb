@@ -10,6 +10,7 @@ import ButtonIcon from '../../ButtonIcon';
 import { upLoadPost } from '../../../lib/post/uploadPost';
 import ListAllEmoji from '../../post/ListAllEmoji';
 import PropTypes from 'prop-types'
+import SubContents from './SubContents';
 
 const FormStoryHome = ({ refetchPost }) => {
     const user=useAuth((state)=>state.user)
@@ -21,9 +22,11 @@ const FormStoryHome = ({ refetchPost }) => {
     const [textPost, setTextPost] = useState([]);
     const [imgPost, setImgPost] = useState(null);
     const [selectedImage, setSelectedImage] = useState(null);
+    const [releatedContent, setReleatedContent]=useState('')
     const [datePost, setDatePost] = useState(null);
     const [openEmoji, setOpenEmoji]=useState(false)
     const [openDate, setOpenDate]=useState(false)
+    const [openContents, setOpenContents]=useState(false)
 
     const onChangeHandleCreatePost = (e) => {
         setText(e.target.value);
@@ -70,7 +73,7 @@ const FormStoryHome = ({ refetchPost }) => {
     const handleAddPost=async(e)=>{
         e.preventDefault()
         if(text!==""){
-            await upLoadPost(user.displayName, datePost, textPost, userImage, uid, selectedImage )
+            await upLoadPost(user.displayName, datePost, textPost, userImage, uid, selectedImage, releatedContent)
             refetchPost()
             setText('')
             setTextPost([''])
@@ -80,6 +83,8 @@ const FormStoryHome = ({ refetchPost }) => {
             setOpenEmoji(false)
             setOpenDate(false)
             setTextRow(2)
+            setOpenContents(false)
+            setOpenContents('')
         }
     }
     return (
@@ -111,6 +116,9 @@ const FormStoryHome = ({ refetchPost }) => {
                     </div>
                     <div className="flex justify-between items-center md:mt-2 pr-2  md:pr-4">
                         <div className="w-1/2 relative flex items-center gap-2 md:gap-4">
+                            <button onClick={()=>setOpenContents(prev=>!prev)} className={`capitalize font-semibold w-40 py-1.5 text-slate-200 rounded-md hover:scale-105 ${releatedContent?"bg-red-800 hover:bg-red-700":"bg-slate-800 hover:bg-slate-500"} transition-all duration-150`}>
+                                {releatedContent || "Contents"}
+                            </button>
                             <ButtonIcon type={'button'} className={'relative text-lg md:text-2xl text-slate-100 hover:scale-110 hover:text-orange-500'}>
                                 <FaImages />
                                 <input onChange={onChangeAddImage} type="file"  accept="image/png, image/gif, image/jpeg" className="absolute top-0 left-0 w-7 h-5 opacity-0" />
@@ -130,6 +138,9 @@ const FormStoryHome = ({ refetchPost }) => {
                                 <div className="absolute top-8 md:left-0 -left-16 rounded-lg z-20">
                                     <Calendar onChange={setDatePost} value={datePost} />
                                 </div>
+                            }
+                            {openContents&&
+                                <SubContents setOpenContents={setOpenContents} setReleatedContent={setReleatedContent} />
                             }
                         </div>
                         <button type="submit" className={'flex items-center justify-center gap-2 bg-blue-600 md:text-md p-2 text-sm rounded-full shadow-md shadow-white/30 text-slate-100 font-semibold hover:bg-red-600 hover:scale-105 hover:ring-2 hover:ring-slate-100 transition-all duration-300'}>
