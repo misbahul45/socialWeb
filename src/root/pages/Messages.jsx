@@ -16,7 +16,7 @@ const Messages = () => {
   })
     const usersFriends=useMemo(()=>{
       if(data){
-        return data.filter((user)=>user.friends.some((friend)=>{
+        return data.filter((user)=>user.friends?.some((friend)=>{
           return friend.friendId===uid && friend.isFriend===true
         }))
       }
