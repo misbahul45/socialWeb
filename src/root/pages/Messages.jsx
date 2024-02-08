@@ -22,8 +22,8 @@ const Messages = () => {
       }
     },[data,uid])
   return (
-    <div className="h-screen w-full flex gap-4 pb-4 pt-20">        
-      <div className="w-80 border border-slate-600 rounded-xl overflow-y-auto">
+    <div className="h-screen w-full flex px-4 md:px-0 md:gap-4 md:pb-4 pb-20 md:pt-20 pt-3">        
+      <div className={`${route!=="/messages"?"md:block hidden":"block"} lg:w-80 md:w-72 w-full border border-slate-600 rounded-xl overflow-y-auto`}>
         { isLoading?
             <UsersLoading />
           :
@@ -33,17 +33,16 @@ const Messages = () => {
                 ))
               }
             </>
-
         }
       </div>
       <div className="flex-1 flex gap-4 justify-center items-center">
         {route==="/messages"?
-          <>
+          <div className="hidden md:flex md:gap-4 justify-center items-center">
             <h1 className="lg:text-5xl font-semibold text-slate-700 font-serif italic animate-pulse">Send Messages</h1>
             <span className="text-4xl text-slate-700 animate-pulse opacity-20">
                 <FaLocationArrow />
             </span>
-          </>
+          </div>
           :
           <>
             <Outlet />

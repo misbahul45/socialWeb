@@ -7,7 +7,9 @@ import useRoute from "../store/route"
 import { useMemo } from "react"
 import ButtonFollow from "./home/Sub/ButtonFollow"
 import { motion } from "framer-motion"
+import { useAuth } from "../store/user"
 const Users = ( {uid, action, search} ) => {
+  const idUser=useAuth((state)=>state.user.uid)
   const changeRoute=useRoute(state=>state.changeRoute)
   const { data, isLoading }=useQuery({
     queryKey:["users"],
@@ -69,7 +71,9 @@ const Users = ( {uid, action, search} ) => {
                     <h1 className="text-md text-slate-400 font-semibold">{user.displayName}</h1>
                 </div>
               </div>
-              <ButtonFollow uid={uid} data={data} idFriend={user.uid} />
+              {idUser===uid&&
+                <ButtonFollow uid={uid} data={data} idFriend={user.uid} />
+              }
           </motion.div>
           ))
         }

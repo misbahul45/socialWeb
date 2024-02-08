@@ -69,7 +69,7 @@ const UserAccount = () => {
         return<div>Loading...</div>
     }
   return (
-    <main className="w-full flex flex-col pb-7">
+    <main className="w-full flex flex-col lg:pb-7 pb-20">
       <div className="relative w-full">
         <div className="relative group">
             {
