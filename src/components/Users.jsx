@@ -50,30 +50,30 @@ const Users = ( {uid, action, search} ) => {
           :
           users.map((user,index)=>(
             <motion.div
-            initial={{ opacity:0 }}
-            animate={{ opacity: 1 }}
-            transition={{
-              duration: 1,
-            }}
-             key={user.uid} className={`${index===0?"rounded-t-lg":index===users.length-1?"rounded-b-lg":users.length===1?"rounded-lg":""} px-5 py-3 flex items-center justify-between w-full hover:bg-slate-900 hover:drop-shadow-lg transition-all duration-200`}>
-              <div onClick={()=>handleToUser(`/user/${user.uid}`)} className="flex cursor-pointer">
-                <div>
-                  {
-                    user.image?
-                    <img src={user.image} alt='userImage' className="sm:mr-4 mr-2 md:w-9 md:h-9 sm:w-8 sm:h-8 w-7 h-7 rounded-full object-cover" />
-                    :
-                    <ButtonIcon className={'mr-0 md::mr-2 flex items-center gap-3 md:text-4xl text-3xl text-slate-100'}>
-                            <FaUserCircle/>
-                    </ButtonIcon>
-                  }
+                initial={{ opacity:0 }}
+                animate={{ opacity: 1 }}
+                transition={{
+                  duration: 1,
+                }}
+                key={user.uid} className={`${index===0?"rounded-t-lg":index===users.length-1?"rounded-b-lg":users.length===1?"rounded-lg":""} px-5 py-3 flex items-center justify-between w-full hover:bg-slate-900 hover:drop-shadow-lg transition-all duration-200`}>
+                <div onClick={()=>handleToUser(`/user/${user.uid}`)} className="flex cursor-pointer">
+                  <div className="flex-1">
+                    {
+                      user.image?
+                      <img src={user.image} alt='userImage' className="sm:mr-4 mr-2 md:w-9 md:h-9 sm:w-8 sm:h-8 w-7 h-7 rounded-full object-cover" />
+                      :
+                      <ButtonIcon className={'mr-0 md::mr-2 flex items-center gap-3 md:text-4xl text-3xl text-slate-100'}>
+                              <FaUserCircle/>
+                      </ButtonIcon>
+                    }
+                  </div>
+                  <div className="flex-1 flex items-center justify-center">
+                      <h1 className="text-sm text-slate-400 font-semibold">{user.displayName}</h1>
+                  </div>
                 </div>
-                <div className="flex-1">
-                    <h1 className="text-md text-slate-400 font-semibold">{user.displayName}</h1>
-                </div>
-              </div>
-              {idUser===uid&&
-                <ButtonFollow uid={uid} data={data} idFriend={user.uid} />
-              }
+                {idUser===uid&&
+                  <ButtonFollow uid={uid} data={data} idFriend={user.uid} />
+                }
           </motion.div>
           ))
         }

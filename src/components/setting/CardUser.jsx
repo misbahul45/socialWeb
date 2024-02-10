@@ -116,7 +116,7 @@ const CardUser = () => {
           <div className="flex gap-2 w-[95%] flex-wrap mb-4 mt-0">
             {
               openReleated&&
-                releatedContentMenu?.map((content,index)=>(
+                releatedContentMenu.map((content,index)=>(
                   <button key={index} onClick={()=>handleAddReleatedContents(content)} className="px-3 py-1.5 rounded-lg border-2 bg-blue-700 text-white shadow-lg shadow-white/20 hover:bg-blue-900 hover:scale-105 transition-all duration-300">
                     {content}
                   </button>
@@ -127,14 +127,14 @@ const CardUser = () => {
       <div className="flex">
         <div className="flex mt-2 gap-2 lg:gap-3 flex-1 flex-wrap">
               {
-                releatedContents?.map((content)=>(
+                releatedContents.map((content)=>(
                   <LabelContent key={content.id} content={content} length={releatedContents.length} edit={edit} />
                 ))
               }
         </div>
         <button
           onClick={handleEdit}
-          className={`${edit ? "bg-red-600 hover:bg-red-800" : "bg-blue-700 hover:bg-blue-800"} absolute bottom-2 right-5 px-5 lg:px-6 py-1.5 lg:py-2 text-sm lg:text-md border rounded-md shadow-lg shadow-black/40 font-semibold text-slate-100 hover:scale-105 transition-all duration-200`}>
+          className={`${edit ? "bg-red-600 hover:bg-red-800" : "bg-blue-700 hover:bg-blue-800"} capitalize absolute bottom-2 right-5 px-5 lg:px-6 py-1.5 lg:py-2 text-sm lg:text-md border rounded-md shadow-lg shadow-black/40 font-semibold text-slate-100 hover:scale-105 transition-all duration-200`}>
           {edit ? "Save" : "Edit"}
         </button>
       </div>
