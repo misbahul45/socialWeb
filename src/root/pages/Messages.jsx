@@ -22,7 +22,7 @@ const Messages = () => {
       }
     },[data,uid])
   return (
-    <div className="h-screen w-full flex px-4 md:px-0 md:gap-4 md:pb-4 pb-20 md:pt-20 pt-3">        
+    <div className="h-screen w-full flex px-4 md:px-0 md:gap-4 md:pb-4 pb-20 sm:pt-20 pt-3">        
       <div className={`${route!=="/messages"?"md:block hidden":"block"} lg:w-80 md:w-72 w-full border border-slate-600 rounded-xl overflow-y-auto`}>
         { isLoading?
             <UsersLoading />
