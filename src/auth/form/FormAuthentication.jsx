@@ -53,9 +53,11 @@ const FormAuth = ({ username, email, password, setUsername, setEmail, setPasswor
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
                                 type="text"
-                                className={`${username.length<6?"focus:border-red-500":"focus:border-blue-500"} capitalize w-full pb-2 pl-3 bg-transparent border-b-2 text-slate-100 outline-none placeholder:text-white`}
+                                minLength={5}
+                                className={`${username.length<5?"focus:border-red-500":"focus:border-blue-500"} peer capitalize w-full pb-2 pl-3 bg-transparent border-b-2 text-slate-100 outline-none placeholder:text-white`}
                                placeholder='User Name'
                             />
+                            <span className="hidden text-xs text-red-600 peer-invalid:block">username must be 5 characters long</span>
                         </div>
                     }
                 </div>
@@ -64,7 +66,7 @@ const FormAuth = ({ username, email, password, setUsername, setEmail, setPasswor
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         type="email"
-                        className={`w-full pb-2 pl-3 bg-transparent border-b-2 text-slate-100 outline-none placeholder:text-white`}
+                        className={`w-full pb-2 pl-3 bg-transparent border-b-2 text-slate-100 outline-none placeholder:text-white invalid:border-b-red-600`}
                         id="exampleInput125"
                         placeholder="Email address" />
                 </div>
