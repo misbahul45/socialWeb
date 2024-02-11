@@ -57,7 +57,7 @@ const Posts = () => {
           <FaSearch />
         </ButtonIcon>
       </form>
-      <div className="w-full px-4">
+      <div className="sm:hidden w-full px-4">
         <div className="absolute top-0 left-0 w-full flex gap-3 justify-center py-4 pl-40 pr-6 overflow-x-scroll no-scrollbar">
           {userReleatedContents.map((content) => (
             <button onClick={()=>setSearching(content.content)} className="bg-slate-900 text-sm min-w-28 px-4 py-1.5 rounded-md shadow-md shadow-white/20 text-slate-100 capitalize" key={content.id}>{content.content}</button>
