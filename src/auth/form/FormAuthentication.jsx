@@ -73,9 +73,11 @@ const FormAuth = ({ username, email, password, setUsername, setEmail, setPasswor
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         type="password"
-                        className={`${password.length<8?"focus:border-red-500":"focus:border-blue-500"} w-full pb-2 pl-3 bg-transparent border-b-2 text-slate-100 outline-none placeholder:text-white`}
+                        minLength={8}
+                        className={`${password.length<8?"focus:border-red-500":"focus:border-blue-500"} peer w-full pb-2 pl-3 bg-transparent border-b-2 text-slate-100 outline-none placeholder:text-white`}
                         id="exampleInput126"
                         placeholder="Password" />
+                        <span className="hidden text-xs text-red-600 peer-invalid:block">password must be 8 characters long</span>
                 </div>
                 <button
                     type="submit"
