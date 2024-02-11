@@ -12,7 +12,13 @@ import Messages from "./root/pages/Messages"
 import MainMessages from "./components/messages/main/MainMessages"
 import Posts from "./root/pages/posts"
 import UserAccount from "./root/pages/UserAccount"
+import { useEffect } from "react"
+import useRoute from "./store/route"
 function App (){
+  const changeRoute=useRoute(state=>state.changeRoute)
+  useEffect(() => {
+    changeRoute('/home')
+  }, []);
   return (
     <main className="flex h-screen">
         <Routes>
