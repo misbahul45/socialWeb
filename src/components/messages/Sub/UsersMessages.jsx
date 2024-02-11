@@ -1,6 +1,8 @@
 
 import PropTypes from 'prop-types'
 import useRoute from '../../../store/route'
+import ButtonIcon from '../../ButtonIcon'
+import { FaUserCircle } from 'react-icons/fa'
 
 const UsersMessages = ({ uImage, uName, uFriendId, isFirstIndex, isLastIndex }) => {
    const changeRoute=useRoute((state)=>state.changeRoute)
@@ -10,7 +12,9 @@ const UsersMessages = ({ uImage, uName, uFriendId, isFirstIndex, isLastIndex }) 
       {uImage?
         <img className="w-10 h-10 rounded-full" src={uImage} alt="friend user image" />
         :
-        <div></div>
+        <ButtonIcon className={'mr-0 md::mr-2 flex items-center justify-center gap-3 md:text-4xl text-3xl text-slate-100'}>
+                <FaUserCircle />
+        </ButtonIcon>
       }
       <h1 className="text-lg text-slate-100">{uName}</h1>
     </div>

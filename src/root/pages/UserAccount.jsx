@@ -13,8 +13,12 @@ import { useAuth } from "../../store/user"
 import { getDownloadURL, listAll, ref, uploadBytes } from "firebase/storage"
 import { db, storage } from "../../config/firebase"
 import { doc, updateDoc } from "firebase/firestore"
+import { IoSettings } from "react-icons/io5"
+import useRoute from "../../store/route"
 
 const UserAccount = () => {
+    const route=useRoute((state)=>state.route)
+    const changeRoute=useRoute((state)=>state.changeRoute)
     const uid=useAuth((state)=>state.user.uid)
     const { id }=useParams()
     const { data:user, isLoading:isLoadingUsers, refetch:refetchUser }=useQuery({
@@ -97,9 +101,14 @@ const UserAccount = () => {
             }
         </div>
       </div>
-      <div className="mt-5 ml-5">
-        <h1 className="lg:text-5xl text-slate-600 font-semibold">{user.displayName}</h1>
-        <p className="text-slate-400 lg:ml-40 mt-2 text-lg">{user.bio==="No bio"?"":user.bio}</p>
+      <div className="mt-5 ml-5 flex gap-8 items-start">
+        <ButtonIcon onClick={()=>changeRoute('/setting')} className={`md:hidden text-2xl text-slate-100`}>
+            <IoSettings className={`${route==="/setting"?"animate-spin":""}`} />
+        </ButtonIcon>
+        <div>
+            <h1 className="lg:text-5xl text-slate-600 font-semibold">{user.displayName}</h1>
+            <p className="text-slate-400 lg:ml-40 mt-2 text-lg">{user.bio==="No bio"?"":user.bio}</p>
+        </div>
       </div>
       <span className="my-4 w-full h-[1px] bg-slate-200"></span>
       <div className="lg:px-24 md:px-16 sm:px-8 py-2">

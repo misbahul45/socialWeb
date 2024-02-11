@@ -1,5 +1,5 @@
 import { MdHomeWork } from "react-icons/md";
-import { FaUserFriends } from "react-icons/fa";
+import { FaUserCircle, FaUserFriends } from "react-icons/fa";
 import { AiFillMessage } from "react-icons/ai";
 import { IoBookmarks,IoSettings } from "react-icons/io5";
 import ButtonIcon from "./ButtonIcon";
@@ -39,9 +39,18 @@ const Menubar = () => {
         <ButtonIcon onClick={()=>handleToRoute('/bookmarks')} text={""} textClassName={'lg:text-[15px] absolute -top-2 right-2 px-1.5 bg-red-500 rounded-full'}  className={`relative w-full flex items-center justify-center py-2 md:px-2 text-2xl text-slate-100 rounded-md  ${route==="/bookmarks"?"shadow-lg bg-slate-100 text-slate-900":"hover:shadow-lg hover:bg-slate-100 hover:text-red-600"} transition-all duration-500`}>
           <IoBookmarks />
         </ButtonIcon>
-        <ButtonIcon onClick={()=>handleToRoute('/setting')}  className={`w-full flex items-center justify-center py-2 md:px-2 text-2xl text-slate-100 rounded-md  ${route==="/setting"?"shadow-lg bg-slate-100 text-slate-900":"hover:shadow-lg hover:bg-slate-100 hover:text-red-600"} transition-all duration-500`}>
+        <ButtonIcon onClick={()=>handleToRoute('/setting')} className={`hidden w-full md:flex items-center justify-center py-2 md:px-2 text-2xl text-slate-100 rounded-md  ${route==="/setting"?"shadow-lg bg-slate-100 text-slate-900":"hover:shadow-lg hover:bg-slate-100 hover:text-red-600"} transition-all duration-500`}>
           <IoSettings className={`${route==="/setting"?"animate-spin":""}`} />
         </ButtonIcon>
+        <div onClick={()=>handleToRoute(`/user/${user.uid}`)} className={`md:hidden rounded-md py-2 px-2 w-full flex items-center justify-center ${route===`/user/${user.uid}`?"bg-red-500":""}`}>
+          {user.photoURL?
+            <img className="w-7 h-7 rounded-full" src={user.photoURL} alt="user image" />
+            :
+            <ButtonIcon className={'mr-0 flex items-center justify-center gap-3 md:text-4xl text-3xl text-slate-100'}>
+                    <FaUserCircle />
+            </ButtonIcon>
+          }
+        </div>
       </div>
     </div>
   )

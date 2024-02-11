@@ -36,7 +36,7 @@ const BooksMark = () => {
   
 
   return (
-    <div className="w-full h-full md:pt-0 pt-4">
+    <div className="w-full h-full md:pt-0 pt-4 px-5">
       <div className="px-4 w-full flex items-center gap-4 md:justify-around mb-7">
         <h1 className="lg:text-4xl sm:text-3xl text-xl text-slate-500 font-semibold">Bookmarks</h1>
         <div className="relative">
