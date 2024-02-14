@@ -59,7 +59,7 @@ const BooksMark = () => {
           }
         </div>
       </div>
-      <div className="w-full h-full md:max-w-[70%] block mx-auto mt-9 pb-20 md:pb-7">
+      <div className="w-full h-full xl:px-32 lg:px-24  block mx-auto mt-9 pb-20 md:pb-7">
           <DisplayAllPost posts={bookmarkPosts} isLoading={isLoading} isError={isError} />
       </div>
     </div>
