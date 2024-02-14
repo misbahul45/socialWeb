@@ -12,7 +12,7 @@ const RootLayout = () => {
   const changeRoute=useRoute(state=>state.changeRoute)
   return (
     <main className="relative w-full mi-h-screen">
-      <ButtonIcon onClick={()=>changeRoute('/posts')} className={`${route==="/home" || route==="/bookmarks" || route.includes("/friends") ?"block":"hidden"} sm:hidden fixed bottom-40 right-8 text-2xl text-slate-100  p-2 rounded-full bg-slate-900 z-20 `}>
+      <ButtonIcon onClick={()=>changeRoute('/posts')} className={`${route==="/home" || route==="/bookmarks" ?"block":"hidden"} sm:hidden fixed bottom-40 right-8 text-2xl text-slate-100  p-2 rounded-full bg-slate-900 z-20 `}>
         <FaSearch  />
       </ButtonIcon>
       <Menubar />
