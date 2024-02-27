@@ -51,7 +51,7 @@ const SubPostBottom = ({likes, comments,numComment, numLikes, postId,  }) => {
 
     const handleSharePost=async()=>{
         try{
-            await sharePost(`/home/post/${postId}`)
+            await sharePost(`/home`)
             toast.info("Copy link successfully !")
         }catch(e){
             toast.error("Something is wrong !")

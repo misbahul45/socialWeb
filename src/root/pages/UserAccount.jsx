@@ -21,13 +21,14 @@ const UserAccount = () => {
     const changeRoute=useRoute((state)=>state.changeRoute)
     const uid=useAuth((state)=>state.user.uid)
     const { id }=useParams()
-    const { data:user, isLoading:isLoadingUsers, refetch:refetchUser }=useQuery({
+    const { data:user, isLoading:isLoadingUsers,refetch:refetchUser }=useQuery({
         queryKey:["user"],
         queryFn:()=>getSingleUser(id)
     })
     const { data, refetch:refetchPost}=useQuery({
         queryKey:["users posts"],
-        queryFn:getAllPost
+        queryFn:getAllPost,
+        refetchInterval:1000
     })
     const [showItems, setShowItems]=useState('posts')
     const [bgImage, setBgImage]=useState('')
