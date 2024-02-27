@@ -28,6 +28,7 @@ const UserAccount = () => {
     const { data, refetch:refetchPost}=useQuery({
         queryKey:["users posts"],
         queryFn:getAllPost,
+        refetchInterval:2000
     })
     const [showItems, setShowItems]=useState('posts')
     const [bgImage, setBgImage]=useState('')
