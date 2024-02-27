@@ -28,7 +28,6 @@ const UserAccount = () => {
     const { data, refetch:refetchPost}=useQuery({
         queryKey:["users posts"],
         queryFn:getAllPost,
-        refetchInterval:1000
     })
     const [showItems, setShowItems]=useState('posts')
     const [bgImage, setBgImage]=useState('')
@@ -38,7 +37,7 @@ const UserAccount = () => {
             refetchUser()
             refetchPost()
         }
-    },[id, refetchUser, refetchPost])
+    },[id, refetchUser, refetchPost,])
     useEffect(()=>{
         if(user){
             setBgImage(user.bgImage)
